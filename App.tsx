@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
-import { Header } from "./src/components/Header";
+import { Home } from "./src/screens/Home";
 import {
   useFonts,
   Nunito_400Regular,
@@ -15,8 +15,8 @@ export default function App() {
     return <Loading />;
   } else {
     return (
-      <View className="items-center flex-1 justify-center  ">
-        <Header />
+      <View>
+        <Home />
       </View>
     );
   }
