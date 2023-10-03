@@ -30,7 +30,7 @@ export function PercentagePanel({
       <TouchableOpacity
         {...rest}
         className={`w-full  px-4 py-5 rounded-lg my-10
-         ${isOffTheDiet ? "bg-RED_LIGHT" : "bg-GREEN_LIGHT"}`}
+         ${isOffTheDiet ? "bg-colors-RED_LIGHT" : "bg-colors-GREEN_LIGHT"}`}
       >
         <View className="relative">
           <View className="absolute right-[-5px] top-[-10px]">
@@ -38,8 +38,8 @@ export function PercentagePanel({
               size: iconProps.size,
               weight: iconProps.weight,
               color: isOffTheDiet
-                ? String(colors.RED_DARK)
-                : String(colors.GREEN_DARK),
+              ? String(colors.colors.RED_DARK)
+              : String(colors.colors.GREEN_DARK)
             })}
           </View>
           <Text className="font-nunito_700 text-GRAY_1 text-3xl text-center">
