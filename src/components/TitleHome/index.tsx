@@ -1,15 +1,15 @@
-import { View, Text } from "react-native";
+import { View, Text } from 'react-native';
 
 interface ITitleHome {
-  title: string;
+	title: string;
 }
 
 export function TitleHome({ title }: ITitleHome) {
-  return (
-    <View>
-      <Text className="font-nunito_400 text-base text-colors-GRAY_1">
-        {title}
-      </Text>
-    </View>
-  );
+	return (
+		<View>
+			<Text className="font-nunito_400 text-base text-colors-GRAY_1">
+				{title}
+			</Text>
+		</View>
+	);
 }
