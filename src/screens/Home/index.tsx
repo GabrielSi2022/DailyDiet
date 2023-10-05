@@ -6,8 +6,15 @@ import { PercentagePanel } from "../../components/PercentagePanel";
 import { TitleHome } from "../../components/TitleHome";
 import { ButtonAddRefeicao } from "../../components/ButtonAddRefeicao";
 import { DiaCompleto } from "../../components/DiaCompleto";
+import { useNavigation } from "@react-navigation/native";
 
 export function Home() {
+  const navigation = useNavigation();
+
+  function handleNewRefeicao() {
+    navigation.navigate("statics" as never);
+  }
+
   const dia = [""];
   return (
     <SafeAreaView className="px-6 py-3">
@@ -20,6 +27,7 @@ export function Home() {
           size: 24,
           weight: "light",
         }}
+        onPress={handleNewRefeicao}
       />
       <TitleHome title="Refeições" />
       <View className="mt-3">
