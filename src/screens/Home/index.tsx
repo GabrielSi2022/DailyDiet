@@ -11,8 +11,12 @@ import { useNavigation } from "@react-navigation/native";
 export function Home() {
   const navigation = useNavigation();
 
-  function handleNewRefeicao() {
+  function handleNavigateStatics() {
     navigation.navigate("statics" as never);
+  }
+
+  function handleNewRefeicao() {
+    navigation.navigate("refeicao" as never);
   }
 
   const dia = [""];
@@ -27,11 +31,15 @@ export function Home() {
           size: 24,
           weight: "light",
         }}
-        onPress={handleNewRefeicao}
+        onPress={handleNavigateStatics}
       />
       <TitleHome title="Refeições" />
       <View className="mt-3">
-        <ButtonAddRefeicao text="Nova refeição" showIconButton />
+        <ButtonAddRefeicao
+          text="Nova refeição"
+          showIconButton
+          onPress={handleNewRefeicao}
+        />
       </View>
 
       <FlatList
