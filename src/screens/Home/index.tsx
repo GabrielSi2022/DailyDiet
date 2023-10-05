@@ -1,22 +1,23 @@
-import { Header } from '../../components/HeaderHome';
 import { FlatList, View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowUpRight } from 'phosphor-react-native';
+
+import { Header } from '../../components/HeaderHome';
 import { PercentagePanel } from '../../components/PercentagePanel';
 import { TitleHome } from '../../components/TitleHome';
 import { ButtonAddRefeicao } from '../../components/ButtonAddRefeicao';
 import { DiaCompleto } from '../../components/DiaCompleto';
-import { useNavigation } from '@react-navigation/native';
 
 export function Home() {
 	const navigation = useNavigation();
 
 	function handleNavigateStatics() {
-		navigation.navigate('statics' as never);
+		navigation.navigate('statics');
 	}
 
 	function handleNewRefeicao() {
-		navigation.navigate('refeicao' as never);
+		navigation.navigate('refeicao');
 	}
 
 	const dia = [''];

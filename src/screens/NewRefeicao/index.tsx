@@ -1,11 +1,21 @@
 import { ArrowLeft } from 'phosphor-react-native';
 import { HeaderRegister } from '../../components/HeaderRegister';
-import { View, Text, TouchableOpacityProps } from 'react-native';
+import { View, Text } from 'react-native';
 import { Input } from '../../components/Input';
 import { CheckBox } from '../../components/CheckBox';
 import { ButtonAddRefeicao } from '../../components/ButtonAddRefeicao';
+import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export function NewRefeicao() {
+	const [isOnTheDiet, setOnTheDiet] = useState(false);
+
+	const navigation = useNavigation();
+
+	function handleAddNewRefeicao() {
+		navigation.navigate('success');
+	}
+
 	return (
 		<View className="flex-1 bg-colors-GRAY_5">
 			<HeaderRegister text="Nova refeição" icon={<ArrowLeft />} />
@@ -53,22 +63,35 @@ export function NewRefeicao() {
 
 					<View className="pt-6">
 						<Text className="font-nunito_700 text-sm leading-[18.2px] text-colors-GRAY_2">
-							Está dento da dieta?
+							Está dentro da dieta?
 						</Text>
 
 						<View className="flex-row gap-2">
 							<View className="flex-1">
-								<CheckBox title="Sim" colorIcon />
+								<CheckBox
+									title="Sim"
+									setSelected={() => setOnTheDiet(true)}
+									colorIcon="green"
+									isChecked={isOnTheDiet}
+								/>
 							</View>
 
 							<View className="flex-1">
-								<CheckBox title="Não" />
+								<CheckBox
+									title="Não"
+									setSelected={() => setOnTheDiet(false)}
+									colorIcon="red"
+									isChecked={!isOnTheDiet}
+								/>
 							</View>
 						</View>
 					</View>
 				</View>
 				<View>
-					<ButtonAddRefeicao text="Cadastrar refeição" />
+					<ButtonAddRefeicao
+						text="Cadastrar refeição"
+						onPress={handleAddNewRefeicao}
+					/>
 				</View>
 			</View>
 		</View>

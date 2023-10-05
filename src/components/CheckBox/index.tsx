@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
 	TouchableOpacity,
 	Text,
@@ -8,31 +7,36 @@ import {
 
 type ICheckBox = TouchableOpacityProps & {
 	title: string;
-	colorIcon?: boolean;
+
+	isChecked: boolean;
+	setSelected: () => void;
+
+	colorIcon: 'green' | 'red';
 };
 
-export function CheckBox({ title, colorIcon }: ICheckBox) {
-	const [isChecked, setIsChecked] = useState(false);
-
-	function handleChange() {
-		setIsChecked(!isChecked);
-		console.log(isChecked);
-	}
-
+export function CheckBox({
+	title,
+	setSelected,
+	isChecked = false,
+	colorIcon,
+}: ICheckBox) {
 	return (
 		<TouchableOpacity
-			className={`p-4 bg-colors-GRAY_6 flex-row items-center justify-center rounded-md mt-2 border-none 
+			className={`p-4 bg-colors-GRAY_6 border-none flex-row items-center justify-center rounded-md mt-2  
     ${
-		isChecked === colorIcon
+		isChecked &&
+		(colorIcon === 'green'
 			? 'bg-colors-GREEN_LIGHT border border-colors-GREEN_DARK'
-			: 'bg-colors-RED_LIGHT border border-r-colors-RED_MID'
+			: 'bg-colors-RED_LIGHT border border-r-colors-RED_MID')
 		} 
     `}
-			onPress={handleChange}
+			onPress={setSelected}
 		>
 			<View
 				className={`w-2 h-2 ${
-					colorIcon ? 'bg-colors-GREEN_DARK' : 'bg-colors-RED_DARK'
+					colorIcon === 'green'
+						? 'bg-colors-GREEN_DARK'
+						: 'bg-colors-RED_DARK'
 				}  rounded-full  `}
 			></View>
 			<Text className="font-nunito_700 text-colors-GRAY_1 text-sm ml-[5px]">
