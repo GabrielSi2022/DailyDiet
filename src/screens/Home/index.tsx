@@ -8,6 +8,7 @@ import { PercentagePanel } from '../../components/PercentagePanel';
 import { TitleHome } from '../../components/TitleHome';
 import { ButtonAddRefeicao } from '../../components/ButtonAddRefeicao';
 import { DiaCompleto } from '../../components/DiaCompleto';
+import { refeicaoGetAll } from '../../storage/refeicao/refeicaoGetAll';
 
 export function Home() {
 	const navigation = useNavigation();
@@ -44,9 +45,9 @@ export function Home() {
 			</View>
 
 			<FlatList
-				data={dia}
+				data={['20/10/2023']}
 				keyExtractor={(item) => item}
-				renderItem={({ item }) => <DiaCompleto />}
+				renderItem={({ item }) => <DiaCompleto date={item} />}
 				showsVerticalScrollIndicator={false}
 				ListEmptyComponent={() => (
 					<Text>Você não cadastrou nenhuma refeição ainda!</Text>

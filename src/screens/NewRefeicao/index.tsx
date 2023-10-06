@@ -6,14 +6,37 @@ import { CheckBox } from '../../components/CheckBox';
 import { ButtonAddRefeicao } from '../../components/ButtonAddRefeicao';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { refeicaoCreate } from '../../storage/refeicao/refeicaoCreate';
+import { IRefeicao } from '../../components/Refeicao';
 
 export function NewRefeicao() {
 	const [isOnTheDiet, setOnTheDiet] = useState(false);
 
+	const [refeicao, setRefeicao] = useState('');
+	const [diet, setDiet] = useState('');
+	const [nome, setNome] = useState('');
+	const [description, setDescription] = useState('');
+	const [date, setDate] = useState('');
+	const [hora, setHora] = useState('');
+
 	const navigation = useNavigation();
 
-	function handleAddNewRefeicao() {
-		navigation.navigate('success');
+	async function handleAddNewRefeicao() {
+		try {
+			const novaRefeicao = {
+				nome,
+				diet,
+				description,
+				date,
+				hora,
+				onTheDiet: isOnTheDiet,
+			};
+
+			await refeicaoCreate(novaRefeicao);
+			navigation.navigate('success');
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	return (
@@ -28,6 +51,8 @@ export function NewRefeicao() {
 								multiline: false,
 							}}
 							label="Nome"
+							onChangeText={setNome}
+							value={nome}
 						/>
 					</View>
 
@@ -39,6 +64,8 @@ export function NewRefeicao() {
 								maxLength: 200,
 							}}
 							label="Descrição"
+							onChangeText={setDescription}
+							value={description}
 						/>
 					</View>
 
@@ -49,6 +76,8 @@ export function NewRefeicao() {
 									multiline: false,
 								}}
 								label="Data"
+								onChangeText={setDate}
+								value={date}
 							/>
 						</View>
 						<View className="flex-1">
@@ -57,6 +86,8 @@ export function NewRefeicao() {
 									multiline: false,
 								}}
 								label="Hora"
+								onChangeText={setHora}
+								value={hora}
 							/>
 						</View>
 					</View>

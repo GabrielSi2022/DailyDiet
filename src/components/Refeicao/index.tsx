@@ -1,15 +1,17 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 
-interface IRefeicao {
+export interface IRefeicao {
 	horas: string;
 	title: string;
 	diet: boolean;
+	description: string;
+	date: string;
 }
 
-export function Refeicao({ horas, title, diet }: IRefeicao) {
+export function Refeicao({ date, horas, title, description, diet }: IRefeicao) {
 	return (
 		<TouchableOpacity className="flex-row items-center justify-between border border-colors-GRAY_5 rounded-md px-3 py-[14px] mt-2">
-			<View className="flex-row flex-1 items-center gap-3   ">
+			<View className="flex-row flex-1 items-center gap-3 ">
 				<Text className="font-nunito_700 text-xs leading-[15.6px] text-colors-GRAY_1 ">
 					{horas}
 				</Text>

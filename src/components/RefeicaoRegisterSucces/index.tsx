@@ -16,13 +16,11 @@ export function RefeicaoRegisterSucces({
 	titleBold,
 	mainTitle,
 }: IRefeicaoRegisterSucces) {
+	const navigation = useNavigation();
 
-    const navigation = useNavigation();
-
-    function handleNavigationHome(){
-        navigation.navigate('home');
-    }
-
+	function handleNavigationHome() {
+		navigation.navigate('home');
+	}
 
 	return (
 		<View className="bg-colors-WHITE h-full items-center justify-center">
@@ -54,7 +52,10 @@ export function RefeicaoRegisterSucces({
 			</View>
 
 			<View>
-				<TouchableOpacity  onPress={handleNavigationHome} className=" px-6 py-4 bg-colors-GRAY_1 rounded-md mt-6">
+				<TouchableOpacity
+					onPress={handleNavigationHome}
+					className=" px-6 py-4 bg-colors-GRAY_1 rounded-md mt-6"
+				>
 					<Text className="text-colors-WHITE">
 						Ir para a página inicial
 					</Text>

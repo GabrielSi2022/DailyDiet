@@ -1,4 +1,10 @@
-import { KeyboardType, Text, TextInput, View } from 'react-native';
+import {
+	KeyboardType,
+	Text,
+	TextInput,
+	TextInputProps,
+	View,
+} from 'react-native';
 
 type InputProps = {
 	keyboardType?: KeyboardType;
@@ -7,7 +13,7 @@ type InputProps = {
 	maxLength?: number;
 };
 
-type IInput = {
+type IInput = TextInputProps & {
 	label: string;
 	inputProps: InputProps;
 };
