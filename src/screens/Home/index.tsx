@@ -9,6 +9,7 @@ import { TitleHome } from "../../components/TitleHome";
 import { ButtonAddRefeicao } from "../../components/ButtonAddRefeicao";
 import { DiaCompleto } from "../../components/DiaCompleto";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { refeicaoGetDietTrueFalse } from "../../storage/refeicao/refeicaoGetDietTrueFalse";
 
 export function Home() {
   const navigation = useNavigation();
@@ -18,7 +19,7 @@ export function Home() {
   }
 
   function handleNewRefeicao() {
-    navigation.navigate("refeicao");
+    navigation.navigate('refeicao');
   }
 
   return (
